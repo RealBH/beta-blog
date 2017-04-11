@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <!--Anything put in here will be displayed on every page!!! This is a wrapper-->
   <title>BetaBlog</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% flash.each do |name, msg| %>
+  <!--ul tag refers to Unordered List-->
+  <ul>
+      <!--li tag refers to List Item-->
+    <li>
+      <%= msg %>
+    </li>
+  </ul>
+  <% end %>
 
 <%= yield %>
 
