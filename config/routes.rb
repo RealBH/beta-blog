@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 root 'pages#home'
 get 'pages/about', to: 'pages#about'
 
+resources :articles # Gives new article path, post to create
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
