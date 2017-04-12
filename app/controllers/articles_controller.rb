@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
   def update
     @article = Article.find(params[:id])
     if @article.update(article_params)
-      flash[:notice] = "Article Successfully Updated"
+      flash[:notice] = "Record Successfully Updated"
       redirect_to article_path(@article)
     else
       render 'edit'
@@ -26,7 +26,7 @@ class ArticlesController < ApplicationController
     # render plain: params[:article].inspect # renders to screen
     @article = Article.new(article_params) #Need to whitelist values of Article
     if @article.save
-      flash[:notice] = "Article Successfully Created!"
+      flash[:notice] = "Record Successfully Created"
       redirect_to article_path(@article)
     else
       #flash[:notice] = "You are dumb, try again"
@@ -39,6 +39,14 @@ class ArticlesController < ApplicationController
   
   def show
     @article = Article.find(params[:id])
+  end
+  
+  def destroy
+    # First thing is you must find article, or load in what's important
+    @article = Article.find(params[:id])
+    @article.destroy
+    flash[:notice] = "Record Successfully Removed"
+    redirect_to articles_path
   end
   
   private

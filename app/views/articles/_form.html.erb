@@ -1,0 +1,28 @@
+<!--This is a partial.  Partial files begin with _-->
+
+<% if @article.errors.any? %>
+<h2>The following errors have occured.</h2>
+  <ul>
+    <% @article.errors.full_messages.each do |msg| %>
+      <li><%= msg %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @article do |f| %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label "Notes" %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.submit (f.object.new_record? ? "Submit" : "Update") %>
+  </p>
+
+<% end %>
+
+<%= link_to "Back to Animal's Records", articles_path %>
