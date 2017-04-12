@@ -1,4 +1,4 @@
-<h1>Showing Selected Article</h1>
+<h1>Showing Record: <%= @article.title %></h1>
 
 <!--p tag refers to paragraph-->
 <p>
@@ -6,5 +6,10 @@
 </p>
 
 <p>
-  Description: <%= @article.description %>
+  Notes: <%= @article.description %>
+</p>
+
+<p>
+  <%= link_to "Edit this Record", edit_article_path(@article) %><br>
+  <%= link_to "Back to Records", articles_path %>
 </p>
